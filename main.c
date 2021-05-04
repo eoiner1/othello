@@ -1,12 +1,26 @@
 #include <stdio.h>
 
-void print(char board[64])
+void print(char board[64], char player1[20], char player2[20])
 {
-
-int i = 0;
-int j = i+8;
+int white = 0;
+int black = 0;
+int i;
+int j = 8;
 int line = 1;
 int counter = 0;
+for(i=0;i<64;i++)
+{
+  if(board[i] == 'W')
+  {
+    white++;
+  }
+  if(board[i] == 'B')
+  {
+    black++;
+  }
+}
+i=0;
+printf("Score: %s (Black) %d:%d %s (White)\n", player1, black, white, player2);
 for(counter = 0; counter<17;counter++)
 {
 if(counter%2 == 0 && counter < 17)
@@ -44,9 +58,24 @@ return board[64];
 
 }
 
+int validMove(char board, int x, int y)
+{
+
+}
+
 int main(void)
 {
+  char player1[20];
+  char player2[20];
+  printf("***Welcone to Othello!***\n");
+  printf("Enter the name of Player 1 (Black):");
+  scanf("%s", &player1);
+  printf("Enter the name of Player 2 (White):");
+  scanf("%s", &player2);
+  printf("\n");
+
   char board[64];
   initializeBoard(board);
-  print(board);
+  print(board, player1, player2);
+
 }
